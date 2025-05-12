@@ -1,0 +1,190 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0400fd;
+    color: #333;
+    margin: auto;
+    max-width: 800px;
+    padding: 20px;
+    line-height: 1.6;
+    text-align: justify;
+    display: block;
+    background-color: #e0f7fa;
+    border: 10px solid #b2ebf2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* Estilos para el título principal */
+#titulo-principal {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: #2c3e50 2px 2px 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Estilos para los subtítulos */
+.subtitulo {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    margin-top: 30px;
+    padding-bottom: 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Estilos para la imagen */
+.foto-redonda {
+    display: block;
+    margin: 20px auto;
+    border-radius: 50%;
+    border: 4px solid #3498db;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.foto-redonda:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para párrafos */
+.parrafo {
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height:1.6;
+    text-indent: 20px;
+    margin-left:20px;
+}
+
+        table, th, td {
+          border:5px solid black;
+          border-collapse: collapse;
+          padding: 10px;
+          text-align: left;
+          font-size: 1em;
+          margin: 10px auto;
+          
+
+        }
+
+        
+    
+/* Estilos para lista de habilidades */
+ul.lista-habilidades {
+    list-style-type: square;
+    margin-left: 20px;
+    padding: left 20px;
+    font-size: 1.2em;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+
+    
+
+}
+
+.lista-habilidades li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    background-color: #3498db;
+    
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    margin: 30px 0;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    border-radius:5px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilos para enlaces */
+.lista-redes a {
+    text-decoration: none;
+    color: #00cccc;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.lista-redes a:hover {
+    color: #c0392b;
+}
+
+
+/*
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color:rgb(232, 238, 231);
+    color: rgb(0, 0, 0);
+    margin: auto;
+    max-width: 800px;
+    padding:20px;
+}
+#titulo-principal{
+    text-align: center;
+    color: black;
+    font-size: 3.5em;
+}
+.subtitulo{
+    color:aqua;
+    border-bottom: 2px solid rgb(28, 162, 185);
+    margin-top: 30px;
+    padding-bottom: 5px;
+
+}
+.parrafo{
+    margin-left: 20px;
+    line-height: 1.6;
+
+}
+.lista-habilidades li{
+    margin-bottom: 5px;
+
+}
+/*
+h1{
+    text-align: center;
+    color: black;
+}
+h2{
+    color:aqua;
+    margin-top: 30px;
+    border-bottom: 2px solid blue;
+    padding-bottom: 5px;
+}
+img{
+    margin: 10px auto ;
+    border-radius: 50%;
+    display: block;
+    border: 10px solid black;
+}
