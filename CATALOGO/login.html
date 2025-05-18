@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Tienda Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 min-h-screen flex items-center justify-center">
+  <div class="bg-white/10 p-8 rounded-2xl shadow-2xl w-full max-w-md border-2 border-fuchsia-500">
+    <h2 class="text-3xl font-bold text-center text-fuchsia-400 mb-8">Iniciar Sesión</h2>
+    <form id="loginForm" class="flex flex-col gap-6">
+      <input type="text" id="usuario" placeholder="Usuario" class="p-4 rounded-lg border-2 border-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 text-lg bg-gray-900 text-fuchsia-200 placeholder-fuchsia-400">
+      <input type="password" id="contrasena" placeholder="Contraseña" class="p-4 rounded-lg border-2 border-fuchsia-400 focus:outline-none focus:ring-2 focus:ring-fuchsia-400 text-lg bg-gray-900 text-fuchsia-200 placeholder-fuchsia-400">
+      <button type="submit" class="bg-gradient-to-r from-fuchsia-700 to-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:from-fuchsia-800 hover:to-indigo-700 transition border-2 border-fuchsia-500">Entrar</button>
+      <p id="errorMsg" class="text-red-400 text-center hidden">Usuario o contraseña incorrectos</p>
+    </form>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+      const errorMsg = document.getElementById('errorMsg');
+      if(usuario === 'admin' && contrasena === '1234') {
+        localStorage.setItem('token', 'abc123');
+        window.location.href = 'index.html';
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

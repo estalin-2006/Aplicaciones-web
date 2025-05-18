@@ -1,5 +1,5 @@
-let productos=[];
-let categoriasseleccionadas="all";
+let productos = [];
+let categoriasseleccionadas = "all";
 
 const contenedorProductos = document.getElementById('productos');
 const contenedorCategorias = document.getElementById('categorias');
@@ -15,7 +15,7 @@ async function cargarProducto() {
       throw new Error("Error en la respuesta de la API");
     }
 
-     productos = await respuesta.json();
+    productos = await respuesta.json();
 
     if (productos.length === 0) {
       mostrarmensaje("No hay productos disponibles en este momento");
@@ -34,8 +34,7 @@ async function cargarProducto() {
         }
       });
     }
-    }  
-   catch (error) {
+  } catch (error) {
     console.error("Error al cargar los productos:", error);
     mostrarmensaje("No se pudieron cargar los productos. Intenta más tarde.");
   }
@@ -97,15 +96,8 @@ function mostrarCategorias(categorias) {
 }
 
 function filtrarPorCategoria(categoria) {
-  fetch("https://fakestoreapi.com/products")
-    .then(respuesta => respuesta.json())
-    .then(productos => {
-      const productosFiltrados = productos.filter(producto => producto.category === categoria);
-      mostrarProductos(productosFiltrados);
-    })
-    .catch(error => {
-      console.error("Error al filtrar los productos:", error);
-    });
+  const productosFiltrados = productos.filter(producto => producto.category === categoria);
+  mostrarProductos(productosFiltrados);
 }
 
 // Mostrar mensaje
@@ -127,7 +119,7 @@ function mostrarProductos(productos) {
       <img src="${producto.image}" alt="${producto.title}" class="w-32 h-32 object-contain mb-4">
       <h3 class="text-lg font-semibold mb-2 text-center">${producto.title}</h3>
       <p class="text-gray-700 font-medium mb-2">$${producto.price}</p>
-      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Agregar al carrito</button>
+      <a href="detalle.html?id=${producto.id}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Detalle</a>
     `;
     contenedorProductos.appendChild(productoDiv);
   });
@@ -136,13 +128,48 @@ function mostrarProductos(productos) {
 inputbuscador.addEventListener("input", () => {
   const texto = inputbuscador.value.toLowerCase();
   const filtrados = productos.filter((p) =>
-      p.title.toLowerCase().includes(texto) ||
+    p.title.toLowerCase().includes(texto) ||
     p.description.toLowerCase().includes(texto)
   );
   mostrarProductos(filtrados);
 });
+
+// Botón de cierre de sesión en el header
+function mostrarLogout() {
+  const header = document.querySelector('header');
+  if (!header) return;
+  let logoutBtn = document.getElementById('logoutBtn');
+  if (!logoutBtn) {
+    logoutBtn = document.createElement('button');
+    logoutBtn.id = 'logoutBtn';
+    logoutBtn.textContent = 'Cerrar sesión';
+    logoutBtn.className = 'ml-4 bg-fuchsia-700 hover:bg-fuchsia-800 text-white px-6 py-2 rounded-lg font-bold transition';
+    logoutBtn.onclick = function () {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    };
+    // Insertar al final del header, junto a la navegación
+    const nav = header.querySelector('nav');
+    if (nav) {
+      nav.parentNode.insertBefore(logoutBtn, nav.nextSibling);
+    } else {
+      header.appendChild(logoutBtn);
+    }
+  }
+}
+
+// Redirección si no hay token
+function checkAuth() {
+  if (!localStorage.getItem('token')) {
+    window.location.href = 'login.html';
+  } else {
+    mostrarLogout();
+  }
+}
+
 // Llamar las funciones para cargar los productos y las categorías
 document.addEventListener("DOMContentLoaded", () => {
+  checkAuth();
   cargarProducto();
   cargarCategorias();
 });
